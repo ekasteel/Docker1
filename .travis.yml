@@ -8,7 +8,7 @@ before_install:
   - sudo docker pull centos:centos7
   - docker run --privileged --detach --tty --interactive --env "container=docker" \
            --volume /sys/fs/cgroup:/sys/fs/cgroup \
-           centos:centos${OS_VERSION} \
+           centos:centos7 \
            /usr/sbin/init
   - DOCKER_CONTAINER_ID=$(docker ps | grep centos | awk '{print $1}')
   - docker logs $DOCKER_CONTAINER_ID
