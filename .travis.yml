@@ -14,8 +14,7 @@ before_install:
   - sudo docker logs $DOCKER_CONTAINER_ID
   
 script:
-  - sudo docker exec --tty --interactive $DOCKER_CONTAINER_ID \
-           /bin/bash -xec "yum --version";"
+  - sudo docker exec --tty --interactive $DOCKER_CONTAINER_ID /bin/bash -xec yum --version"
   - sudo docker ps -a
   - sudo docker stop $DOCKER_CONTAINER_ID
   - sudo docker rm -v $DOCKER_CONTAINER_ID
