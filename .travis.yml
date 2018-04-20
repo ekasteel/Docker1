@@ -9,16 +9,16 @@ before_install:
   - sudo service docker restart
   - sleep 5
   - sudo docker pull centos:centos7
-  - docker run --privileged --detach --tty --interactive --env "container=docker" \
+  - sudo docker run --privileged --detach --tty --interactive --env "container=docker" \
            --volume /sys/fs/cgroup:/sys/fs/cgroup \
            centos:centos7 \
            /usr/sbin/init
   - DOCKER_CONTAINER_ID=$(docker ps | grep centos | awk '{print $1}')
-  - docker logs $DOCKER_CONTAINER_ID
+  - sudo docker logs $DOCKER_CONTAINER_ID
   
 script:
-  - docker exec --tty --interactive $DOCKER_CONTAINER_ID \
+  - sudo docker exec --tty --interactive $DOCKER_CONTAINER_ID \
            /bin/bash -xec "yum --version";"
-  - docker ps -a
-  - docker stop $DOCKER_CONTAINER_ID
-  - docker rm -v $DOCKER_CONTAINER_ID
+  - sudo docker ps -a
+  - sudo docker stop $DOCKER_CONTAINER_ID
+  - sudo docker rm -v $DOCKER_CONTAINER_ID
