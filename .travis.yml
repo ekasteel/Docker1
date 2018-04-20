@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+  
+before_install:
+  - sudo apt-get update
+  - sudo docker pull centos:centos7
+  - docker run -d -p 127.0.0.1:80:4567 centos:centos7 /bin/sh -c "more /etc/centos-release"
+  - docker ps -a
+  - docker run centos:centos7 /bin/sh -c "uname -a"  
+
+script:
+  - cmake --version
