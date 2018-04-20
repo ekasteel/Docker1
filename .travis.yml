@@ -11,4 +11,4 @@ before_install:
   - docker run centos:centos7 /bin/sh -c "uname -a"  
 
 script:
-  - cmake --version
+  - yum --version
